@@ -1,0 +1,37 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+
+.btn.btn-info {
+    color: #fff;
+    border-color: #009ef7;
+    background-color: #009ef7;
+}
+
+
+.badge {
+    display: inline-block;
+    padding: .5em .85em;
+    font-size: .85rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .475rem;
+}
+
+.badge-light-success {
+    color: #50cd89;
+    background-color: #e8fff3;
+}
