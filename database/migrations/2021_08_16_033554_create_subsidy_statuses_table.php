@@ -18,7 +18,7 @@ class CreateSubsidyStatusesTable extends Migration
             $table->unsignedBigInteger('citizen_uid');
             $table->unsignedBigInteger('subsidy_uid');
             $table->string('status_receive');
-            $table->date('date_receive');
+            $table->date('date_receive')->nullable();
             $table->timestamps();
 
             $table->foreign('citizen_uid')->references('id')->on('citizens')->onDelete('cascade');

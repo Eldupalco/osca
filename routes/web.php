@@ -29,11 +29,18 @@ Auth::routes();
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/citizen/application', [App\Http\Controllers\CitizensController::class, 'application'])->name('citizen/application');
+Route::post('/citizen/application/register', [App\Http\Controllers\CitizensController::class, 'register'])->name('citizen/register');
+Route::post('/citizen/login', [App\Http\Controllers\CitizensController::class, 'login'])->name('citizen/login');
+
+
+
 Route::middleware('auth')->group(function(){
 
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/register', [App\Http\Controllers\AdminController::class, 'applicationForm'])->name('admin.applicationForm');
+Route::post('/admin/register/citizen', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
 Route::get('/admin/records/request', [App\Http\Controllers\AdminController::class, 'pendingRequest'])->name('admin.request');
 Route::get('/admin/records', [App\Http\Controllers\AdminController::class, 'records'])->name('admin.records');
 Route::get('/admin/records/{citizens}/edit', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
@@ -47,9 +54,7 @@ Route::get('/admin/user/register/form', [App\Http\Controllers\UserController::cl
 Route::post('/admin/user/register/register', [App\Http\Controllers\UserController::class, 'register'])->name('admin/user/register');
 Route::get('/admin/user/info/{user}', [App\Http\Controllers\UserController::class, 'info'])->name('admin/user/info');
 Route::patch('/admin/user/info/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin/user/info/update');
-
 Route::delete('/admin/user/delete/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('admin/user/delete');
-
 
 
 

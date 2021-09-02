@@ -5,10 +5,10 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h5 class="m-0 font-weight-bold text-primary mt-3 text-uppercase text-uppercase text-center">Application
-                Form | Update</h5>
+            <h5 class="m-0 font-weight-bold text-primary mt-3 text-uppercase text-uppercase text-center">Update Application
+                </h5>
 
-            <div class="card shadow mb-4 mt-5">
+            <div class="card shadow mb-4 mt-4">
 
                 <div class="card-body">
 
@@ -155,7 +155,7 @@
                             <div class="form-group col-md-6">
                                 <label for="contact_number">Contact Number</label>
                                 <input type="number" class="form-control rounded-1 btn-sm text-uppercase"
-                                    name="Contact Number" id="contact_number" placeholder="09XXXXXXXXX"
+                                    name="contact_number" id="contact_number" placeholder="09XXXXXXXXX"
                                     value="{{ $citizens->contact_number }}">
                             </div>
 

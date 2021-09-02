@@ -8,7 +8,7 @@
             <h5 class="m-0 font-weight-bold text-primary mt-3 text-uppercase text-uppercase text-center">Registration
                 Form</h5>
 
-            <div class="card shadow mb-4 mt-5">
+            <div class="card shadow mb-4 mt-4">
 
                 <div class="card-body">
 
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="form-group d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary mt-5">Approve</button>
+                            <button type="submit" class="btn btn-primary mt-5">Submit</button>
                         </div>
 
 

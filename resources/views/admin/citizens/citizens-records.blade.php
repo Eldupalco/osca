@@ -6,11 +6,10 @@
 
 @section('content')
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 mt-5">
         <div class="card-header border-0">
             <div class="d-sm-flex align-items-center justify-content-end">
                 <a href="{{route('admin.applicationForm')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i

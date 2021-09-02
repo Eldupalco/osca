@@ -127,13 +127,13 @@
     <script>
         var stars = [
             @foreach ($Months as $d)
-                {{ $d->TotalReceive }},
+                {{ $d->totalreceive}},
             @endforeach
         ];
 
         var frameworks = [
             @foreach ($Months as $d)
-                "{{ $d->Month }}",
+                "{{ $d->month }}",
             @endforeach
         ];
 

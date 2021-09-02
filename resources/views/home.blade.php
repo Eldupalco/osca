@@ -1,6 +1,6 @@
 <x-home-master>
 
-@section('content')
+    @section('content')
 
-@endsection
+    @endsection
 </x-home-master>

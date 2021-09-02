@@ -28,7 +28,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <img src="../assets/img/logos.png" height="35" class="d-inline-block align-top" alt="">
                 </a>
 
@@ -45,290 +45,314 @@
                 <h5 class="m-0 font-weight-bold text-primary mt-3 text-uppercase text-uppercase text-center">Application
                     Form</h5>
 
-                <div class="card shadow mb-4 mt-4">
+                    <div class="card shadow mb-4 mt-4">
 
-                    <div class="card-body">
+                        <div class="card-body">
 
-                        <form>
-                            <h6 class="m-0 font-weight-bold text-primary mt-3 mb-4 text-uppercase text-uppercase">
-                                Personal
-                                Information</h6>
+                            <form action="{{route('citizen/register') }}" method="POST" enctype="multipart/form-data">
 
-                            <div class="form-row">
+                                @csrf
+
+                                <h6 class="m-0 font-weight-bold text-primary mt-3 mb-4 text-uppercase text-uppercase">
+                                    Personal
+                                    Information</h6>
 
 
-                                <div class="form-group required col-md-6">
-                                    <label for="citizen_id">Citizens ID</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="citizen_id" placeholder="2020-8238274" value="{{old('citizen_id')}}">
+
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6" hidden>
+                                        <label for="status">Status</label>
+                                        <select class="custom-select text-uppercase " id="status" name="status">
+                                            <option value="Pending">Pending</option>
+
+
+
+                                        </select>
+                                    </div>
                                 </div>
 
-                            </div>
+                                <div class="form-row">
 
-                            <div class="form-row">
+                                    <div class="form-group   col-md-6">
+                                        <label for="citizen_id">Citizens ID</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="citizen_id"
+                                            name="citizen_id" placeholder="2020-8238274" value="">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="lastname">Last Name</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="lastname" placeholder="DELA CRUZ" value="{{old('lastname')}}">
                                 </div>
 
+                                <div class="form-row">
 
-                                <div class="form-group col-md-6">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="firstname" placeholder="JUAN" value="{{old('firstname')}}">
+                                    <div class="form-group col-md-6">
+                                        <label for="last_name">Last Name</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="last_name"
+                                            name="last_name" placeholder="DELA CRUZ" value="">
+                                    </div>
+
+
+                                    <div class="form-group col-md-6">
+                                        <label for="first_name">First Name</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="first_name"
+                                            name="first_name" placeholder="JUAN" value="">
+                                    </div>
+
+                                </div>
+                                {{-- end --}}
+                                <div class="form-row">
+
+
+                                    <div class="form-group col-md-6">
+                                        <label for="middle_name">Middle Name</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="middle_name"
+                                            name="middle_name" placeholder="REYES" value="">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="suffix">Suffix</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="suffix"
+                                            name="suffix" placeholder="E.G. JR., III" value="">
+                                    </div>
+
                                 </div>
 
-                            </div>
-                            {{-- end --}}
-                            <div class="form-row">
+                                {{-- end --}}
 
 
-                                <div class="form-group col-md-6">
-                                    <label for="middlename">Middle Name</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="middlename" placeholder="REYES" value="{{old('middlename')}}">
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="birth_date">Birth Date</label>
+                                        <input type="date" class="form-control rounded-1 btn-sm text-uppercase" name="birth_date"
+                                            id="birth_date" placeholder="REYES" value="">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="birth_place">Birth Place</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" name="birth_place"
+                                            id="birth_place" placeholder="PROVENCE" value="">
+                                    </div>
+
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="suffix">Suffix</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="suffix" required
-                                        placeholder="E.G. JR., III" value="{{old('suffix')}}">
-                                </div>
-
-                            </div>
-
-                            {{-- end --}}
+                                {{-- end --}}
 
 
-                            <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="birth_date">Birth Date</label>
-                                    <input type="date" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="birth_date" placeholder="REYES" value="{{old('birth_date')}}">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="birth_place">Birth Place</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="birth_place" placeholder="PROVENCE" value="{{old('birth_place')}}">
-                                </div>
-
-                            </div>
-
-                            {{-- end --}}
-
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-12">
-                                    <label for="address">Address</label>
-                                    <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="address" placeholder="(St,Brgy,City,Province,Zip Code)" value="{{old('address')}}">
-                                </div>
-
-                            </div>
-
-                            {{-- end --}}
-
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="sex">Sex</label>
-                                    <select class="custom-select text-uppercase" id="sex" required>
-                                        <option selected>--Select--</option>
-                                        <option value="MALE">Male</option>
-                                        <option value="FEMALE">Female</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="civil_status">Civil Status</label>
-                                    <select class="custom-select text-uppercase " id="civil_status" required>
-                                        <option selected>--Select--</option>
-                                        <option value="SINGLE">SINGLE</option>
-                                        <option value="MARRIED">MARRIED</option>
-                                        <option value="SEPARATED">SEPARATED</option>
-                                        <option value="ANNULLED">ANNULLED</option>
-                                        <option value="WIDOW/WIDOWER">WIDOW/WIDOWER</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                            {{-- end --}}
-
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control rounded-1 btn-sm text-uppercase" id="email" required
-                                        placeholder="USERNAME@DOMAIN.COM" value="{{old('email')}}">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="contact_number">Contact Number</label>
-                                    <input type="number" class="form-control rounded-1 btn-sm text-uppercase" required
-                                        id="contact_number" placeholder="09XXXXXXXXX" value="{{old('contact_number')}}">
-                                </div>
-
-                            </div>
-
-                            {{-- end --}}
-
-
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label for="ips">Are you a:</label>
-                                    <select class="custom-select text-uppercase" id="ips" required>
-                                        <option selected>--Select--</option>
-                                        {{-- <option value="A+">A+</option>
-                                        <option value="B+">B+</option>
-                                        <option value="O+">O+</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="A1+">A1+</option>
-                                        <option value="A2+">A2+</option>
-                                        <option value="A1B+">A1B+</option>
-                                        <option value="A2B+">A2B+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B-">B-</option>
-                                        <option value="O-">O-</option>
-                                        <option value="AB-">AB-</option>
-                                        <option value="A1-">A1-</option>
-                                        <option value="A2-">A2-</option>
-                                        <option value="A1B">A1B-</option> --}}
-
-                                        <option value="Pensioner">Pensioner</option>
-                                        <option value="Supported">Supported</option>
-                                        <option value="Indigent">Indigent</option>
-
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="religion">Religion</label>
-                                    <select class="custom-select text-uppercase " id="religion" required>
-                                        <option value="NONE">NO RELIGION</option>
-                                        <option value="Ang Dating Daan">Ang Dating Daan</option>
-                                        <option value="Atheists (did not identify religion)">Atheists (did not identify
-                                            religion)</option>
-                                        <option value="Buddhists">Buddhists</option>
-                                        <option value="Church of Jesus Christ and the Latter Day Saints">Church of Jesus
-                                            Christ and the Latter Day Saints</option>
-                                        <option value="El Shaddai">El Shaddai</option>
-                                        <option value="Iglesia ni Cristo (Church of Christ)">Iglesia ni Cristo (Church
-                                            of Christ)</option>
-                                        <option value="Jehovah's Witnesses">Jehovah's Witnesses</option>
-                                        <option value="Muslim/Islamic">Muslim/Islamic</option>
-                                        <option value="Protestants">Protestants</option>
-                                        <option value="Roman Catholic">Roman Catholic</option>
-                                        <option value="Seventh-Day Adventists">Seventh-Day Adventists</option>
-                                        <option value="United Church of Christ in the Philippines">United Church of
-                                            Christ in the Philippines</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            {{-- end --}}
-
-                            <div class="row">
-                                <div class="col-md-6">
-
-                                    <h6 class="m-0 font-weight-bold text-primary mt-5 mb-5 text-uppercase">
-                                        Identification
-                                        Number</h6>
-
+                                <div class="form-row">
 
                                     <div class="form-group col-md-12">
-                                        <label for="GSIS">GSIS</label>
-                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase"
-                                            id="GSIS" value="{{old('GSIS')}}">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="address"
+                                            name="address" placeholder="(St,Brgy,City,Province,Zip Code)"
+                                            value="">
                                     </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label for="SSS">SSS</label>
-                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase"
-                                            id="SSS" value="{{old('SSS')}}">
+                                </div>
+
+                                {{-- end --}}
+
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="sex">Sex</label>
+                                        <select class="custom-select text-uppercase" id="sex" name="sex">
+                                            <option selected></option>
+                                            <option value="MALE">Male</option>
+                                            <option value="FEMALE">Female</option>
+                                        </select>
                                     </div>
 
-                                    {{-- end --}}
-
-
-
-                                    <div class="form-group col-md-12">
-                                        <label for="TIN">TIN</label>
-                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase"
-                                            id="TIN" value="{{old('TIN')}}">
+                                    <div class="form-group col-md-6">
+                                        <label for="civil_status">Civil Status</label>
+                                        <select class="custom-select text-uppercase " id="civil_status" name="civil_status">
+                                            <option selected></option>
+                                            <option value="SINGLE">SINGLE</option>
+                                            <option value="MARRIED">MARRIED</option>
+                                            <option value="SEPARATED">SEPARATED</option>
+                                            <option value="ANNULLED">ANNULLED</option>
+                                            <option value="WIDOW/WIDOWER">WIDOW/WIDOWER</option>
+                                        </select>
                                     </div>
 
-                                    <div class="form-group col-md-12" small>
-                                        <label for="PHILHEALTH">PHILHEALTH</label>
-                                        <input type="text" class="form-control rounded-1 text-uppercase"
-                                            id="PHILHEALTH" value="{{old('PHILHEALTH')}}">
+                                </div>
+                                {{-- end --}}
+
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control rounded-1 btn-sm text-uppercase" id="email"
+                                            name="email" placeholder="USERNAME@DOMAIN.COM" value="">
                                     </div>
 
-                                    {{-- end --}}
+                                    <div class="form-group col-md-6">
+                                        <label for="contact_number">Contact Number</label>
+                                        <input type="number" class="form-control rounded-1 btn-sm text-uppercase"
+                                            name="contact_number" id="contact_number" placeholder="09XXXXXXXXX"
+                                            value="">
+                                    </div>
+
+                                </div>
+
+                                {{-- end --}}
+
+
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="ips">Are you a:</label>
+                                        <select class="custom-select text-uppercase" id="ips" name="ips">
+                                            <option selected></option>
+                                            <option value="Pensioner">Pensioner</option>
+                                            <option value="Supported">Supported</option>
+                                            <option value="Indigent">Indigent</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="religion">Religion</label>
+                                        <select class="custom-select text-uppercase " id="religion" name="religion">
+                                            <option value="NONE"></option>
+                                            <option value="NONE">NO RELIGION</option>
+                                            <option value="Ang Dating Daan">Ang Dating Daan</option>
+                                            <option value="Atheists (did not identify religion)">Atheists (did not identify
+                                                religion)</option>
+                                            <option value="Buddhists">Buddhists</option>
+                                            <option value="Church of Jesus Christ and the Latter Day Saints">Church of Jesus
+                                                Christ and the Latter Day Saints</option>
+                                            <option value="El Shaddai">El Shaddai</option>
+                                            <option value="Iglesia ni Cristo (Church of Christ)">Iglesia ni Cristo (Church
+                                                of Christ)</option>
+                                            <option value="Jehovah's Witnesses">Jehovah's Witnesses</option>
+                                            <option value="Muslim/Islamic">Muslim/Islamic</option>
+                                            <option value="Protestants">Protestants</option>
+                                            <option value="Roman Catholic">Roman Catholic</option>
+                                            <option value="Seventh-Day Adventists">Seventh-Day Adventists</option>
+                                            <option value="United Church of Christ in the Philippines">United Church of
+                                                Christ in the Philippines</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                {{-- end --}}
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <h6 class="m-0 font-weight-bold text-primary mt-5 mb-5 text-uppercase">
+                                            Identification
+                                            Number</h6>
+
+
+                                        <div class="form-group col-md-12">
+                                            <label for="GSIS">GSIS</label>
+                                            <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="GSIS"
+                                                name="GSIS" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="SSS">SSS</label>
+                                            <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="SSS"
+                                                name="SSS" value="">
+                                        </div>
+
+                                        {{-- end --}}
+
+
+
+                                        <div class="form-group col-md-12">
+                                            <label for="TIN">TIN</label>
+                                            <input type="text" class="form-control rounded-1 btn-sm text-uppercase" id="TIN"
+                                                name="TIN" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-12" small>
+                                            <label for="PHILHEALTH">PHILHEALTH</label>
+                                            <input type="text" class="form-control rounded-1 text-uppercase" id="PHILHEALTH"
+                                                name="PHILHEALTH" value="">
+                                        </div>
+
+                                        {{-- end --}}
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <h6 class="m-0 font-weight-bold text-primary mt-5 mb-5  text-uppercase">In Case Of
+                                            Emergency Please
+                                            Notify</h6>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="emergency_person">Emergency Person</label>
+                                            <input type="text" class="form-control rounded-1 btn-sm text-uppercase"
+                                                name="emergency_person" id="emergency_person"
+                                                value="">
+                                        </div>
+
+                                        <div class="form-group col-md-12" small>
+                                            <label for="emergency_number">Emergency Number</label>
+                                            <input type="number" class="form-control rounded-1 text-uppercase"
+                                                name="emergency_number" id="emergency_number"
+                                                value="">
+                                        </div>
+
+                                        {{-- end --}}
+                                    </div>
                                 </div>
 
 
-                                <div class="col-md-6">
-                                    <h6 class="m-0 font-weight-bold text-primary mt-5 mb-5  text-uppercase">In Case Of
-                                        Emergency Please
-                                        Notify</h6>
-
-                                    <div class="form-group col-md-12">
-                                        <label for="emergency_person">Emergency Person</label>
-                                        <input type="text" class="form-control rounded-1 btn-sm text-uppercase" required
-                                            id="emergency_person"  value="{{old('emergency_person')}}">
-                                    </div>
-
-                                    <div class="form-group col-md-12" small>
-                                        <label for="emergency_number">Emergency Number</label>
-                                        <input type="number" class="form-control rounded-1 text-uppercase" required
-                                            id="emergency_number" value="{{old('emergency_number')}}">
-                                    </div>
-
-                                    {{-- end --}}
+                                <div class="form-group mt-3 d-flex flex-column">
+                                    <label class="mr-2">Birth Certificate</label>
+                                    <input type="file" name="birth_certificate_image">
+                                    <div class="text-danger"></div>
                                 </div>
-                            </div>
 
-
-
-
-
-                            <div class="form-group">
-
-                                <p style="font-size: 10px;" class="mt-5">
-                                    By submitting the data required in this Senior Citizen Online ID Application, You
-                                    CONSENT to the collection, generation, use, processing, storage
-                                    and retention of your personal information and sensitive personal information by the
-                                    Office of the Senior Citizen's Affairs for the purpose(s)
-                                    described in this document.
-                                    <br>
-                                    <br>
-                                    PLEASE ensure that you have completely read and understood the Data Privacy Notice
-                                    of this data processing system before submitting.
-                                    You also authorized the Office to disclose your information to accredited or
-                                    non-accredited parties.
-                                </p>
-
-                                <div class="form-check mt-5">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Agree
-                                    </label>
+                                <div class="form-group mt-3 d-flex flex-column">
+                                    <label class="mr-2">Citizen ID</label>
+                                    <input type="file" name="citizen_id_image">
+                                    <div class="text-danger"></div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+
+
+                                <div class="form-group">
+
+                                    <p style="font-size: 10px;" class="mt-5">
+                                        By submitting the data required in this Senior Citizen Online ID Application, You
+                                        CONSENT to the collection, generation, use, processing, storage
+                                        and retention of your personal information and sensitive personal information by the
+                                        Office of the Senior Citizen's Affairs for the purpose(s)
+                                        described in this document.
+                                        <br>
+                                        <br>
+                                        PLEASE ensure that you have completely read and understood the Data Privacy Notice
+                                        of this data processing system before submitting.
+                                        You also authorized the Office to disclose your information to accredited or
+                                        non-accredited parties.
+                                    </p>
+
+                                    <div class="form-check mt-5">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                        <label class="form-check-label" for="gridCheck">
+                                            Agree
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                                </div>
+
+
+                            </form>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

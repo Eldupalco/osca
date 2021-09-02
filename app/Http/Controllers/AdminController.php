@@ -20,7 +20,7 @@ class AdminController extends Controller
 
         $Months = DB::select(DB::raw("SELECT
         subsidies.subsidy_type,
-        MONTHNAME(subsidies.subsidy_date) AS Month,
+        to_char(subsidies.subsidy_date, 'Month')as Month,
         COUNT(subsidy_statuses.date_receive) AS TotalReceive,
         subsidy_statuses.status_receive
     FROM
@@ -35,24 +35,21 @@ class AdminController extends Controller
         subsidies.subsidy_date,
         subsidies.subsidy_type,
         subsidy_statuses.status_receive"));
-
         return view('admin.index', compact('citizensActive', 'citizensDecease', 'citizensPending', 'Months','citizens'));
     }
 
     public function applicationForm()
     {
-        // $citizen =  Citizen::create($this->validateRequest());
-        // $this->storeImage($citizen);
-
         return view('admin.citizens.citizens-register');
     }
 
     public function register()
     {
-        // $citizen =  Citizen::create($this->validateRequest());
-        // $this->storeImage($citizen);
+        $citizen=Citizen::create($this->validateRequest());
 
-        return view('admin.citizens.citizens-register');
+        $this->storeImage($citizen);
+
+        return redirect()->route('admin.records');
     }
 
 
@@ -86,30 +83,40 @@ class AdminController extends Controller
         return view('admin.citizens.citizens-records', compact('citizens'));
     }
 
+
+    public function record(Request $request)
+    {
+        $status = $request->input('status');
+        $data['citizensActive'] = $status;
+        dd($data);
+        // $citizens = Citizen::Active()->get();
+        // return view('admin.view-records',compact('citizens'));
+    }
+
+
     private function validateRequest()
     {
-
-
         return request()->validate([
             'citizen_id' => 'required',
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_name' => 'required',
-            // 'suffix' => '',
-            // 'birth_date' => 'required',
-            // 'birth_place' => 'required',
-            // 'sex' => 'required',
-            // 'civil_status' => 'required',
-            // 'email' => 'required',
-            // 'contact_number' => 'required',
-            // 'ips' => 'required',
-            // 'religion' => 'required',
-            // 'GSIS' => 'required',
-            // 'SSS' => 'required',
-            // 'TIN' => 'required',
-            // 'PHILHEALTH' => 'required',
-            // 'emergency_person' => 'required',
-            // 'emergency_number' => 'required',
+            'suffix' => '',
+            'birth_date' => 'required',
+            'birth_place' => 'required',
+            'address' => 'required',
+            'sex' => 'required',
+            'civil_status' => 'required',
+            'email' => 'required',
+            'contact_number' => 'required',
+            'ips' => 'required',
+            'religion' => 'required',
+            'GSIS' => '',
+            'SSS' => '',
+            'TIN' => '',
+            'PHILHEALTH' => '',
+            'emergency_person' => 'required',
+            'emergency_number' => 'required',
             'status' => 'required',
             'birth_certificate_image' => 'sometimes|file|image|max:5000',
             'citizen_id_image' => 'sometimes|file|image|max:5000'
@@ -124,14 +131,5 @@ class AdminController extends Controller
                 'citizen_id_image' => request()->citizen_id_image->store('uploads', 'public')
             ]);
         }
-    }
-
-    public function record(Request $request)
-    {
-        $status = $request->input('status');
-        $data['citizensActive'] = $status;
-        dd($data);
-        // $citizens = Citizen::Active()->get();
-        // return view('admin.view-records',compact('citizens'));
     }
 }
